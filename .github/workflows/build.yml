@@ -44,10 +44,6 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"TEST" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
           dotnet build
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-      - uses: actions/checkout@v3
-        with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting.
-          fetch-depth: 0
 
     # Triggering SonarQube analysis as results of it are required by Quality Gate check.
       - name: SonarQube Scan
