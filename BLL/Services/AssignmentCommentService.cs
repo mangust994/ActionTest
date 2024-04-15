@@ -29,10 +29,7 @@ namespace BLL.Services
         {
             return _mapper.Map<List<AssignmentCommentModel>>(this.repository.GetFilteredByQuery<AssignmentComment>(predicate));
         }
-        //public AssignmentCommentModel GetAssignmentComment(Expression<Func<AssignmentComment, bool>> predicate)
-        //{
-        //    return _mapper.Map<AssignmentCommentModel>(this.repository.FirstorDefault(predicate));
-        //}
+
 
        
 
