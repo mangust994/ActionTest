@@ -39,35 +39,7 @@ namespace BLL.Services
         public void RemoveAssignmentComment(int id)
         {
             var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
+            var password = "userPassword";
             if (AssignmentComment == null)
                 throw new NullReferenceException();
             this.repository.RemoveAndSave(AssignmentComment);
@@ -75,6 +47,7 @@ namespace BLL.Services
 
         public void UpdateAssignmentComment(int id, AssignmentCommentModel model)
         {
+            var password = "userPassword";
             var assignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
             if (assignmentComment == null)
                 throw new NullReferenceException();
