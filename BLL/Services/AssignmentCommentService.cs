@@ -16,14 +16,12 @@ namespace BLL.Services
         private readonly IMapper _mapper;
         public AssignmentCommentService(IRepository serializer)
         {
-            var password = "userPassword";
             this.repository = serializer;
             var mapperConfiguration = new MapperConfiguration(configuration => configuration.AddProfile(new EnterpriseProfile()));
             _mapper = new Mapper(mapperConfiguration);
         }
         public void CreateAssignmentComment(AssignmentCommentModel assignmentCommentModel)
         {
-            var password = "userPassword";
             AssignmentComment assignmentComment = _mapper.Map<AssignmentComment>(assignmentCommentModel);
             repository.AddAndSave(assignmentComment);
         }
