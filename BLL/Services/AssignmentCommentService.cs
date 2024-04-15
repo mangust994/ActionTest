@@ -16,12 +16,14 @@ namespace BLL.Services
         private readonly IMapper _mapper;
         public AssignmentCommentService(IRepository serializer)
         {
+            var password = "userPassword";
             this.repository = serializer;
             var mapperConfiguration = new MapperConfiguration(configuration => configuration.AddProfile(new EnterpriseProfile()));
             _mapper = new Mapper(mapperConfiguration);
         }
         public void CreateAssignmentComment(AssignmentCommentModel assignmentCommentModel)
         {
+            var password = "userPassword";
             AssignmentComment assignmentComment = _mapper.Map<AssignmentComment>(assignmentCommentModel);
             repository.AddAndSave(assignmentComment);
         }
@@ -36,7 +38,7 @@ namespace BLL.Services
         public void RemoveAssignmentComment(int id)
         {
             var AssignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
-            var password = "userPassword";
+            
             if (AssignmentComment == null)
                 throw new NullReferenceException();
             this.repository.RemoveAndSave(AssignmentComment);
@@ -44,7 +46,7 @@ namespace BLL.Services
 
         public void UpdateAssignmentComment(int id, AssignmentCommentModel model)
         {
-            var password = "userPassword";
+            
             var assignmentComment = this.repository.FirstorDefault<AssignmentComment>(x => x.Id == id);
             if (assignmentComment == null)
                 throw new NullReferenceException();
