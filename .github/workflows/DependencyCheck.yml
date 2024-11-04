@@ -45,7 +45,7 @@ jobs:
       - name: Run OWASP Dependency-Check
         run: |
           /usr/local/bin/dependency-check/bin/dependency-check.sh \
-            --project POC \
+            --project HH \
             --scan ./ \
             --format ALL \
             --out ./dependency-check-report \
