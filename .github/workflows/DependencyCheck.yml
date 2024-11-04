@@ -43,14 +43,15 @@ jobs:
           mv ${{ github.workspace }}/dependency-check /usr/local/bin/dependency-check
 
       - name: Run OWASP Dependency-Check
+        env:
+          NVD_API_KEY: ${{ secrets.NVDApiKey }}
         run: |
           /usr/local/bin/dependency-check/bin/dependency-check.sh \
             --project HH \
             --scan ./ \
             --format ALL \
             --out ./dependency-check-report \
-            --data ${{ github.workspace }}/dependency-check/data \
-            --nvdApiKey ${{ secrets.NVDApiKey }}
+            --data ${{ github.workspace }}/dependency-check/data
 
       - name: Upload Dependency-Check Report
         uses: actions/upload-artifact@v3
