@@ -38,8 +38,8 @@ jobs:
 
       - name: Download OWASP Dependency-Check
         run: |
-          curl -L -o dependency-check.tar.gz https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip
-          tar -xzf dependency-check.tar.gz -C ${{ github.workspace }}
+          curl -L -o dependency-check.zip https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip
+          unzip dependency-check.zip -d ${{ github.workspace }}
           mv ${{ github.workspace }}/dependency-check /usr/local/bin/dependency-check
 
       - name: Run OWASP Dependency-Check
