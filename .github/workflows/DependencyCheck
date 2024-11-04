@@ -1,0 +1,54 @@
+name: OWASP Dependency-Check
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  dependency-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Find NVD Cache Path
+        id: nvd-cache-path
+        run: |
+          mkdir -p ${{ github.workspace }}/dependency-check/data
+          echo "nvd_cache_path=${{ github.workspace }}/dependency-check/data" >> $GITHUB_ENV
+
+      - name: Restore NVD Cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/dependency-check/data
+          key: NVDCache-${{ runner.os }} 
+          restore-keys: |
+            NVDCache-${{ runner.os }}
+
+      - name: Run OWASP Dependency-Check
+        uses: dependency-check/owasp-dependency-check-action@v5.0.0
+        with:
+          project: 'ActionTest'
+          scan: './'
+          format: 'XML,HTML'
+          output-directory: './dependency-check-report'
+          data-directory: '${{ github.workspace }}/dependency-check/data'
+          enable-experimental: true
+          nvd-api-key: ${{ secrets.NVDApiKey }}
+
+      - name: Upload Dependency-Check Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: dependency-check-report
+          path: ./dependency-check-report
