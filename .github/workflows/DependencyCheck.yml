@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the code
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Java
@@ -36,16 +36,20 @@ jobs:
           restore-keys: |
             NVDCache-${{ runner.os }}
 
+      - name: Download OWASP Dependency-Check
+        run: |
+          curl -L -o dependency-check.tar.gz https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip
+          tar -xzf dependency-check.tar.gz -C ${{ github.workspace }}
+          mv ${{ github.workspace }}/dependency-check /usr/local/bin/dependency-check
+
       - name: Run OWASP Dependency-Check
-        uses: dependency-check/owasp-dependency-check-action@v5.0.0
-        with:
-          project: 'ActionTest'
-          scan: './'
-          format: 'XML,HTML'
-          output-directory: './dependency-check-report'
-          data-directory: '${{ github.workspace }}/dependency-check/data'
-          enable-experimental: true
-          nvd-api-key: ${{ secrets.NVDApiKey }}
+        run: |
+          /usr/local/bin/dependency-check/bin/dependency-check.sh \
+            --project "POC" \
+            --scan "./" \
+            --format "XML,HTML" \
+            --out "./dependency-check-report" \
+            --data ${{ github.workspace }}/dependency-check/data
 
       - name: Upload Dependency-Check Report
         uses: actions/upload-artifact@v3
