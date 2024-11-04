@@ -45,6 +45,14 @@ jobs:
       - name: Run OWASP Dependency-Check
         run: |
           /usr/local/bin/dependency-check/bin/dependency-check.sh \
-            --project "POC" \
-            --scan "./" \
-            --format "ALL
+            --project POC \
+            --scan ./ \
+            --format ALL \
+            --out ./dependency-check-report \
+            --data ${{ github.workspace }}/dependency-check/data
+
+      - name: Upload Dependency-Check Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: dependency-check-report
+          path: ./dependency-check-report
