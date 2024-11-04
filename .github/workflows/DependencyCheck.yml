@@ -50,6 +50,7 @@ jobs:
             --format ALL \
             --out ./dependency-check-report \
             --data ${{ github.workspace }}/dependency-check/data
+            --nvdApiKey ${{ secrets.NVDApiKey }}
 
       - name: Upload Dependency-Check Report
         uses: actions/upload-artifact@v3
